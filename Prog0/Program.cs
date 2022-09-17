@@ -2,11 +2,15 @@
  * Program: 1A
  * Due: 09/26/2022
  * 
- * New Class Descriptions in Prog0:
- *    Package 
- *    GroundPackage 
- *    AirPackage 
- *    NextDayAirPackage 
+ * Notes:
+ *    Tests are performed 
+ * 
+ * New Class Descriptions in Prog0.ClassLib.Models.New namespace:
+ *    Package - An abstract class that build off of Parcel, and additionally specify dimentions and weight for a package.
+ *    GroundPackage - A concrete class that builds off of Package, and includes a calculated ZoneDistance that is used when determining cost.
+ *    AirPackage - An abstract class that builds off of Package, and includes methods to determine if package is heavy or long.
+ *    NextDayAirPackage - A concrete class that builds off of AirPackage, and includes an express fee that is used when determining cost as well as surcharges regarding heavy or large package dimentions.
+ *    TwoDayAirPackage - A concrete class that builds off of AirPackage, and includes Delivery enum that is used when determining cost as well as an applicable saver discount to the total cost.
  */
 
 using static System.Console;

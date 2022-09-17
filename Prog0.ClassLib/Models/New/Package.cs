@@ -1,4 +1,4 @@
-﻿namespace Prog0.Models.New;
+﻿namespace Prog0.ClassLib.Models.New;
 
 public abstract class Package : Parcel
 {
@@ -13,7 +13,7 @@ public abstract class Package : Parcel
         OriginAddress = originAddress;
         DestinationAddress = destinationAddress;
 
-        const string valueException = "Value must be greater than or equal to 0";
+        const string valueException = "Value cannot be negative";
 
         Length = length < 0 ? throw new ArgumentOutOfRangeException(nameof(length), valueException) : length;
         Width = width < 0 ? throw new ArgumentOutOfRangeException(nameof(width), valueException) : width;
@@ -26,10 +26,8 @@ public abstract class Package : Parcel
     public double Height { get; }
     public double Weight { get; }
 
-    public override string ToString()
-    {
-        return $"{base.ToString()}" +
-            $"{Environment.NewLine}" +
-            $"Length: {Length}; Width: {Width}; Height: {Height}; Weight: {Weight}";
-    }
+    public override string ToString() =>
+        base.ToString() +
+        Environment.NewLine +
+        $"Length: {Length}; Width: {Width}; Height: {Height}; Weight: {Weight}";
 }
