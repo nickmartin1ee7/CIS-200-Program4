@@ -28,9 +28,9 @@ namespace Prog0.Tests
             var origin = new Address("TestA", "123 Unit Test Rd.", "Louisville", "KY", 1);
             var destination = new Address("TestB", "456 Unit Test Rd.", "Louisville", "KY", 2);
 
-            var groundPackage = new NextDayAirPackage(origin, destination, length, width, height, weight, expressFee);
+            var nextDayAirPackage = new NextDayAirPackage(origin, destination, length, width, height, weight, expressFee);
 
-            Assert.That(groundPackage.CalcCost(), Is.EqualTo(cost));
+            Assert.That(nextDayAirPackage.CalcCost(), Is.EqualTo(cost));
         }
     }
 }
