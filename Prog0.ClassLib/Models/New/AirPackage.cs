@@ -30,13 +30,13 @@ public abstract class AirPackage : Package
     /// <summary>
     /// Detemines if the package's weight is considered heavy (surcharge fee).
     /// </summary>
-    /// <returns>true if above 75 pounds; otherwise, false</returns>
+    /// <returns>true if at or above 75 pounds; otherwise, false</returns>
     public bool IsHeavy() => Weight >= HEAVY_WEIGHT;
 
     /// <summary>
     /// Detemines if the package's total dimentions is considered long (surcharge fee).
     /// </summary>
-    /// <returns>true if above 100 inches; otherwise, false</returns>
+    /// <returns>true if at or above 100 inches; otherwise, false</returns>
     public bool IsLarge() => Length + Width + Height >= LARGE_SIZE;
 
     /// <summary>
