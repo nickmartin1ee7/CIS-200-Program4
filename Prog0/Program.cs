@@ -3,7 +3,7 @@
  * Due: 09/26/2022
  * 
  * Notes:
- *    Tests are performed 
+ *    Tests are performed in Prog0.Tests
  * 
  * New Class Descriptions in Prog0.ClassLib.Models.New namespace:
  *    Package - An abstract class that build off of Parcel, and additionally specify dimentions and weight for a package.
@@ -12,6 +12,8 @@
  *    NextDayAirPackage - A concrete class that builds off of AirPackage, and includes an express fee that is used when determining cost as well as surcharges regarding heavy or large package dimentions.
  *    TwoDayAirPackage - A concrete class that builds off of AirPackage, and includes Delivery enum that is used when determining cost as well as an applicable saver discount to the total cost.
  */
+
+using Prog0.ClassLib.Models.New;
 
 using static System.Console;
 
@@ -36,10 +38,23 @@ class Program
         Letter l2 = new Letter(a2, a4, 1.20M); // Test Letter 2
         Letter l3 = new Letter(a4, a1, 1.70M); // Test Letter 3
 
-        List<Parcel> parcels = new List<Parcel> { l1, l2, l3 }; // Test list of parcels
+        List<Parcel> parcels = new List<Parcel>
+        {
+            l1,
+            l2,
+            l3,
+            new GroundPackage(a1, a2, 100, 100, 100, 100),
+            new GroundPackage(a1, a2, 1, 1, 1, 1),
+            new NextDayAirPackage(a3, a4, 5, 5, 5, 5, 250.99M),
+            new NextDayAirPackage(a3, a4, 100, 100, 100, 100, 250.99M),
+            new TwoDayAirPackage(a3, a4, 5, 5, 5, 5, TwoDayAirPackage.Delivery.Early),
+            new TwoDayAirPackage(a3, a4, 5, 5, 5, 5, TwoDayAirPackage.Delivery.Saver),
+            new TwoDayAirPackage(a3, a4, 100, 100, 100, 100, TwoDayAirPackage.Delivery.Early),
+            new TwoDayAirPackage(a3, a4, 100, 100, 100, 100, TwoDayAirPackage.Delivery.Saver)
+        }; // Test list of parcels
 
         // Display data
-        WriteLine("Program 0 - List of Parcels\n");
+        WriteLine("Program 1A - List of Parcels\n");
 
         foreach (Parcel p in parcels)
         {
