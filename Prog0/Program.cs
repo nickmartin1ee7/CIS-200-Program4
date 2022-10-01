@@ -67,15 +67,15 @@ class Program
         }
 
         WriteLine("# Select all Parcels and order by destination zip (descending)");
-        WriteLine(string.Join(Environment.NewLine, parcels.OrderByDestinationZip(true)));
+        WriteLine(string.Join(Environment.NewLine, parcels.OrderByDestinationZip()));
 
         WriteLine("# Select all Parcels and order by cost (ascending)");
         WriteLine(string.Join(Environment.NewLine, parcels.OrderByCost()));
 
         WriteLine("# Select all Parcels and order by Parcel type (ascending) and then cost (descending)");
-        WriteLine(string.Join(Environment.NewLine, parcels.OrderByTypeThenByCostDescending()));
+        WriteLine(string.Join(Environment.NewLine, parcels.OrderByTypeAscendingThenByCostDescending()));
 
         WriteLine("# Select all AirPackage objects that are heavy and order by weight (descending)");
-        WriteLine(string.Join(Environment.NewLine, parcels.OrderByParcelWeightDescending()));
+        WriteLine(string.Join(Environment.NewLine, parcels.OrderByAirPackageWeightDescending()));
     }
 }
