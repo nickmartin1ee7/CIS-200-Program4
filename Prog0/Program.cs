@@ -6,6 +6,7 @@
  *    Tests are performed in Prog0.Tests
  */
 
+using Prog0.ClassLib.BusinessLogic;
 using Prog0.ClassLib.Models.New;
 
 using static System.Console;
@@ -65,27 +66,16 @@ class Program
             WriteLine("--------------------");
         }
 
-        Console.WriteLine("# Select all Parcels and order by destination zip (descending)");
-        Console.WriteLine(string.Join(Environment.NewLine, from p in parcels
-                                                           orderby p.DestinationAddress.Zip descending
-                                                           select p));
-        
-        Console.WriteLine("# Select all Parcels and order by cost (ascending)");
-        Console.WriteLine(string.Join(Environment.NewLine, from p in parcels
-                                                           orderby p.CalcCost() ascending
-                                                           select p));
-        
-        Console.WriteLine("# Select all Parcels and order by Parcel type (ascending) and then cost (descending)");
-        Console.WriteLine(string.Join(Environment.NewLine, from p in parcels
-                                                           orderby p.GetType().Name ascending
-                                                           orderby p.CalcCost() descending
-                                                           select p));
+        WriteLine("# Select all Parcels and order by destination zip (descending)");
+        WriteLine(string.Join(Environment.NewLine, parcels.OrderByDestinationZip(true)));
 
-        Console.WriteLine("# Select all AirPackage objects that are heavy and order by weight (descending)");
-        Console.WriteLine(string.Join(Environment.NewLine, from p in parcels
-                                                           where p is AirPackage airP && airP.IsHeavy()
-                                                           let airP = (AirPackage)p
-                                                           orderby airP.Weight descending
-                                                           select airP));
+        WriteLine("# Select all Parcels and order by cost (ascending)");
+        WriteLine(string.Join(Environment.NewLine, parcels.OrderByCost()));
+
+        WriteLine("# Select all Parcels and order by Parcel type (ascending) and then cost (descending)");
+        WriteLine(string.Join(Environment.NewLine, parcels.OrderByTypeThenByCostDescending()));
+
+        WriteLine("# Select all AirPackage objects that are heavy and order by weight (descending)");
+        WriteLine(string.Join(Environment.NewLine, parcels.OrderByParcelWeightDescending()));
     }
 }
