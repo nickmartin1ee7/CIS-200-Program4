@@ -78,6 +78,16 @@ public abstract class Parcel : IComparable
     // Postcondition: The parcel's cost has been returned
     public abstract decimal CalcCost();
 
+    /// <summary>
+    /// Default comparison is based on the price of this parcels's price compared to <see cref="obj"/>'s price.
+    /// </summary>
+    /// <param name="obj">The <see cref="Parcel"/> to compare prices with.</param>
+    /// <returns>
+    /// -1 if this parcel's cost is less than comparison value's cost.
+    /// 0 if this parcel's cost is equal to comparison value's cost.
+    /// 1 if this parcel's cost is greater than comparison value's cost.
+    /// </returns>
+    /// <exception cref="ArgumentException"></exception>
     public int CompareTo(object? obj)
     {
         if (obj is not Parcel p)
