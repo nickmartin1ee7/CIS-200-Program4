@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public abstract class Parcel
+public abstract class Parcel : IComparable
 {
     private Address _originAddress; // The origin address for the parcel
     private Address _destAddress;   // The destination address for the parcel
@@ -77,6 +77,14 @@ public abstract class Parcel
     // Precondition:  None
     // Postcondition: The parcel's cost has been returned
     public abstract decimal CalcCost();
+
+    public int CompareTo(object? obj)
+    {
+        if (obj is not Parcel p)
+            throw new ArgumentException($"Comparison must be against another {nameof(Parcel)}");
+        
+        return CalcCost().CompareTo(p.CalcCost());
+    }
 
     // Precondition:  None
     // Postcondition: A String with the parcel's data has been returned
